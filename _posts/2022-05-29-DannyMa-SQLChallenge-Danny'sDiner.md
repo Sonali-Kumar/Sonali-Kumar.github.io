@@ -6,7 +6,7 @@ tags: [SQL, DannyMa, Danny's Diner]
 ---
 
 ---
-1. What is the total amount each customer spent at the restaurant?
+1.What is the total amount each customer spent at the restaurant?
 
 ```ruby
 SELECT s.customer_id, sum(m.price) as amount_spent
@@ -19,7 +19,7 @@ SELECT s.customer_id, sum(m.price) as amount_spent
 ```
 
 ---
-2. How many days has each customer visited the restaurant?
+2.How many days has each customer visited the restaurant?
 
 ```ruby
 SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
