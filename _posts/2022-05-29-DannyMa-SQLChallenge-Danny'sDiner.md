@@ -86,6 +86,7 @@ WHERE RANK = 1
 Which item was purchased first by the customer after they became a member?
 
 ```ruby
+
 with CTE AS (
   SELECT s.customer_id, menu.product_name, s.order_date, m.join_date,
 DENSE_RANK () over (partition by s.customer_id order by s.order_date) as ordered_first
@@ -99,12 +100,14 @@ WHERE s.order_date >= m.join_date )
 SELECT customer_id, product_name
 FROM CTE
 WHERE ordered_first = 1
+
 ```
 
 --- 
 Which item was purchased just before the customer became a member?
 
 ```ruby
+
 WITH CTE AS (
   SELECT S.customer_id, menu.product_name, m.join_date, s.order_date,
 	DENSE_RANK () over (partition by s.customer_id order by s.order_date desc) as ordered_before_membership
@@ -118,6 +121,7 @@ where s.order_date < m.join_date
 SELECT customer_id, product_name
 FROM CTE
 WHERE ordered_before_membership = 1 
+
 ```
 
 --- 
@@ -125,6 +129,7 @@ WHERE ordered_before_membership = 1
 What is the total items and amount spent for each member before they became a member?
 
 ```ruby
+
 CREATE VIEW  ITEMS_AMOUNT_SPENT AS
 (SELECT S.CUSTOMER_ID, COUNT(S.CUSTOMER_ID) AS TOTAL_ITEMS, SUM(MENU.PRICE), S.product_id
 
@@ -162,12 +167,14 @@ SELECT customer_id, SUM(SUM) AS AMOUNT_SPENT, SUM(TOTAL_ITEMS) AS TOTAL_ITEMS
 FROM CTE
 GROUP BY 1
 ORDER BY customer_id
+
 ```
 
 --- 
 If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```ruby
+
 SELECT S.customer_id, sum(
 case 
 	when  m.product_name = 'sushi' then m.price*20 
