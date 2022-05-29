@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Column Subscriber Analysis
+title: Danny's Diner Week 1 SQL Challenge
 image: "/posts/Danny's_Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
@@ -28,9 +28,11 @@ SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
 
 ```
 
-```ruby
 
---3.What was the first item from the menu purchased by each customer?
+---
+3.What was the first item from the menu purchased by each customer?
+
+```ruby
 with CTE AS 
 (
       SELECT S.order_date, S.customer_id, M.product_name,
@@ -44,7 +46,13 @@ FROM CTE
 WHERE RANK = 1 
 order BY customer_id
 
---4.What is the most purchased item on the menu and how many times was it purchased by all customers?
+```
+
+---
+4.What is the most purchased item on the menu and how many times was it purchased by all customers?
+
+```ruby
+
 SELECT COUNT(s.product_id), M.product_name
 FROM DANNYS_DINER.SALES as s
 Join dannys_diner.menu as m 
@@ -52,8 +60,11 @@ using (product_id)
 GROUP BY 2
 ORDER BY COUNT DESC
 LIMIT 1
+```
 
--- 5. Which item was the most popular for each customer?
+--- 
+5. Which item was the most popular for each customer?
+```ruby
 WITH CTE AS (
   SELECT s.customer_id, m.product_name,
 RANK () OVER( PARTITION BY s.customer_id ORDER BY COUNT(m.product_name) desc)
@@ -151,7 +162,7 @@ case
 
 group by 1
 order by s.customer_id
-
+```
 ---
 10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
