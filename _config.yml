@@ -8,15 +8,15 @@ plugins:
 
 #-------------------------------
 # General Site Settings
-title: Kedeisha Bryan
-description: "Hi I'm Kedeisha, and I'm a Data Analyst based in Marietta, GA. I am passionate about providing value through analytics, data visualization, and process improvement. Please connect with me on LinkedIn for analytics business inquiries"
+title: Sonali Kumar
+description: "Hi I'm Sonali, and I'm a HR Analyst based in Upstate NY. I am passionate about people analytics, organization development, Health & Wellness, and process improvement. 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # About Section
-subtitle: Data Science <span style="color:#add8e6"> Portfolio </span>
-location: "Marietta, GA"
+subtitle: HR Analyst <span style="color:#add8e6"> Portfolio </span>
+location: "Albany, NY"
 resume_url: /docs/Kedeisha_Bryan_Resume_PDF.pdf
 avatar_image: /img/Kedeisha Bryan Headshot Upload.jpg
 
