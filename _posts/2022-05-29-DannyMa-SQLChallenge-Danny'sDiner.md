@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Danny's Diner Week 1 SQL Challenge
-image: "/posts/Danny's_Diner.png"
+image: "/posts/Danny_Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
 
@@ -195,6 +195,6 @@ GROUP BY 1
 
 ```
 
-![alt text](/img/posts/Danny's_Diner.png "Danny's Diner")
+![alt text](/img/posts/Danny_Diner.png "Danny's Diner")
 ---
 
