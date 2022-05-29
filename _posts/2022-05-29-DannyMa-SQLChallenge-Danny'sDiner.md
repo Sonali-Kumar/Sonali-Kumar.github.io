@@ -6,20 +6,29 @@ tags: [SQL, DannyMa, Danny's Diner]
 ---
 
 ---
+1.What is the total amount each customer spent at the restaurant?
 
 ```ruby
-/* 1.What is the total amount each customer spent at the restaurant?
 SELECT s.customer_id, sum(m.price) as amount_spent
-FROM dannys_diner.sales as s 
-LEFT JOIN dannys_diner.menu as M 
-on s.product_id = m.product_id
-GROUP BY 1
-ORDER BY 1 
+	FROM dannys_diner.sales as s 
+	LEFT JOIN dannys_diner.menu as M 
+	on s.product_id = m.product_id
+	GROUP BY 1
+	ORDER BY 1 
 
---2.How many days has each customer visited the restaurant?
+```
+
+---
+2.How many days has each customer visited the restaurant?
+
+```ruby
 SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
-FROM dannys_diner.sales
-GROUP BY 1
+	FROM dannys_diner.sales
+	GROUP BY 1
+
+```
+
+```ruby
 
 --3.What was the first item from the menu purchased by each customer?
 with CTE AS 
