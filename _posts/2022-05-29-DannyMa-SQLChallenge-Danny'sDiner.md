@@ -152,8 +152,10 @@ case
 group by 1
 order by s.customer_id
 
--- 10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, 
--- not just sushi - how many points do customer A and B have at the end of January?
+---
+10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+
+```ruby
 
 with CTE AS 
 (select s.customer_id, s.order_date, menu.product_name,
@@ -180,40 +182,8 @@ CASE
 FROM CTE
 GROUP BY 1
 
-*/
-
-
-```
-
-
-```ruby
-ax = sns.stripplot(x='Hour', y='Opens', data=summary)
-```
-
-
----
-I notice that most of the time the newsletters are opened between 7-9, but the data corresponds to the time the newsletters are actually sent. I visualize a scatterplot of sends (subscriber count) and open and notice a linear relationship. This prompted me to perform a linear regression and visualize a basic model.
-
-```ruby
-y = summary['Opens']
-x = summary['Sends']
-np.polyfit(x,y, deg =1)
-
-potential_Send = np.linspace(0,5000,100)
-potential_Opens = 0.44547871*potential_Send + 183.80574801
-
-sns.scatterplot(x = 'Sends', y = 'Opens', data = summary)
-plt.plot(potential_Send,potential_Opens, color = 'red')
-plt.show()
 ```
 
 ![alt text](/img/posts/Danny's_Diner.png "Danny's Diner")
 ---
-After performing more analysis, I did research and found that Mailchip suggests that 10 AM is the most optimal time to send out newsletters/emails to subscribers. I used that as  my recommendation to The Column.
-
-![alt text](/img/posts/Opens_Analysis.jpg "Opens Analysis")
-
-![alt text](/img/posts/Clicks_Analysis.jpg "Clicks Analysis")
-
-![alt text](/img/posts/Lifetime_Column.jpg "Lifetime Performance")
 
