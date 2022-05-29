@@ -189,7 +189,7 @@ GROUP BY 1
 ```ruby
 ax = sns.stripplot(x='Hour', y='Opens', data=summary)
 ```
-![alt text](/img/posts/Strip_plot.png "Strip Plot")
+![alt text](/img/Danny's Diner.png)
 
 ---
 I notice that most of the time the newsletters are opened between 7-9, but the data corresponds to the time the newsletters are actually sent. I visualize a scatterplot of sends (subscriber count) and open and notice a linear relationship. This prompted me to perform a linear regression and visualize a basic model.
