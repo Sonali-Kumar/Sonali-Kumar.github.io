@@ -189,7 +189,7 @@ GROUP BY 1
 ```ruby
 ax = sns.stripplot(x='Hour', y='Opens', data=summary)
 ```
-![alt text](/img/Danny's Diner.png)
+
 
 ---
 I notice that most of the time the newsletters are opened between 7-9, but the data corresponds to the time the newsletters are actually sent. I visualize a scatterplot of sends (subscriber count) and open and notice a linear relationship. This prompted me to perform a linear regression and visualize a basic model.
@@ -207,7 +207,7 @@ plt.plot(potential_Send,potential_Opens, color = 'red')
 plt.show()
 ```
 
-![alt text](/img/posts/Opens_Regression.png "Opens Linear Regression")
+![alt text](/img/posts/Danny's Diner.png "Danny's Diner")
 ---
 After performing more analysis, I did research and found that Mailchip suggests that 10 AM is the most optimal time to send out newsletters/emails to subscribers. I used that as  my recommendation to The Column.
 
