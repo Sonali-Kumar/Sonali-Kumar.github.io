@@ -102,7 +102,7 @@ WHERE ordered_first = 1
 ```
 
 --- 
-7. Which item was purchased just before the customer became a member?
+Which item was purchased just before the customer became a member?
 
 ```ruby
 WITH CTE AS (
