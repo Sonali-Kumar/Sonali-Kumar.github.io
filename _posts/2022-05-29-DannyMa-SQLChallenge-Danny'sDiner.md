@@ -6,7 +6,7 @@ tags: [SQL, DannyMa, Danny's Diner]
 ---
 
 ---
-1.What is the total amount each customer spent at the restaurant?
+1. What is the total amount each customer spent at the restaurant?
 
 ```ruby
 SELECT s.customer_id, sum(m.price) as amount_spent
@@ -19,7 +19,7 @@ SELECT s.customer_id, sum(m.price) as amount_spent
 ```
 
 ---
-2.How many days has each customer visited the restaurant?
+2. How many days has each customer visited the restaurant?
 
 ```ruby
 SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
@@ -30,7 +30,7 @@ SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
 
 
 ---
-3.What was the first item from the menu purchased by each customer?
+3. What was the first item from the menu purchased by each customer?
 
 ```ruby
 with CTE AS 
@@ -49,7 +49,7 @@ order BY customer_id
 ```
 
 ---
-4.What is the most purchased item on the menu and how many times was it purchased by all customers?
+4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```ruby
 
@@ -64,7 +64,9 @@ LIMIT 1
 
 --- 
 5. Which item was the most popular for each customer?
+
 ```ruby
+
 WITH CTE AS (
   SELECT s.customer_id, m.product_name,
 RANK () OVER( PARTITION BY s.customer_id ORDER BY COUNT(m.product_name) desc)
@@ -76,10 +78,12 @@ GROUP BY s.customer_id, m.product_name, s.product_id)
 SELECT customer_id, product_name
 from CTE
 WHERE RANK = 1
--- why can i not use product_id in the window function? 
 
+```
 
--- 6. Which item was purchased first by the customer after they became a member?
+--- 
+6. Which item was purchased first by the customer after they became a member?
+```ruby
 with CTE AS (
   SELECT s.customer_id, menu.product_name, s.order_date, m.join_date,
 DENSE_RANK () over (partition by s.customer_id order by s.order_date) as ordered_first
@@ -93,8 +97,11 @@ WHERE s.order_date >= m.join_date )
 SELECT customer_id, product_name
 FROM CTE
 WHERE ordered_first = 1
+```
 
--- 7.Which item was purchased just before the customer became a member?
+--- 7. Which item was purchased just before the customer became a member?
+
+```ruby
 WITH CTE AS (
   SELECT S.customer_id, menu.product_name, m.join_date, s.order_date,
 	DENSE_RANK () over (partition by s.customer_id order by s.order_date desc) as ordered_before_membership
@@ -108,9 +115,11 @@ where s.order_date < m.join_date
 SELECT customer_id, product_name
 FROM CTE
 WHERE ordered_before_membership = 1 
+```
 
--- 8.What is the total items and amount spent for each member before they became a member?
-
+--- 
+8.What is the total items and amount spent for each member before they became a member?
+```ruby
 CREATE VIEW  ITEMS_AMOUNT_SPENT AS
 (SELECT S.CUSTOMER_ID, COUNT(S.CUSTOMER_ID) AS TOTAL_ITEMS, SUM(MENU.PRICE), S.product_id
 
@@ -148,9 +157,12 @@ SELECT customer_id, SUM(SUM) AS AMOUNT_SPENT, SUM(TOTAL_ITEMS) AS TOTAL_ITEMS
 FROM CTE
 GROUP BY 1
 ORDER BY customer_id
+```
 
--- 9.If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+--- 
+9.If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
+```ruby
 SELECT S.customer_id, sum(
 case 
 	when  m.product_name = 'sushi' then m.price*20 
