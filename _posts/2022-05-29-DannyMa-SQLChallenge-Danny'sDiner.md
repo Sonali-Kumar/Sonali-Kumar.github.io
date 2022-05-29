@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Column Subscriber Analysis
-image: "/posts/Danny's Diner.png"
+image: "/posts/Danny's_Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
 
@@ -207,7 +207,7 @@ plt.plot(potential_Send,potential_Opens, color = 'red')
 plt.show()
 ```
 
-![alt text](/img/posts/Danny's Diner.png "Danny's Diner")
+![alt text](/img/posts/Danny's_Diner.png "Danny's Diner")
 ---
 After performing more analysis, I did research and found that Mailchip suggests that 10 AM is the most optimal time to send out newsletters/emails to subscribers. I used that as  my recommendation to The Column.
 
