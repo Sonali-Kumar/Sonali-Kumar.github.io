@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Column Subscriber Analysis
-image: "/posts/thecolumn_share.png"
+image: "/posts/Danny's Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
 
