@@ -6,7 +6,7 @@ tags: [SQL, DannyMa, Danny's Diner]
 ---
 
 ---
-1.What is the total amount each customer spent at the restaurant?
+What is the total amount each customer spent at the restaurant?
 
 ```ruby
 SELECT s.customer_id, sum(m.price) as amount_spent
@@ -19,7 +19,7 @@ SELECT s.customer_id, sum(m.price) as amount_spent
 ```
 
 ---
-2.How many days has each customer visited the restaurant?
+How many days has each customer visited the restaurant?
 
 ```ruby
 SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
@@ -30,7 +30,7 @@ SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
 
 
 ---
-3. What was the first item from the menu purchased by each customer?
+What was the first item from the menu purchased by each customer?
 
 ```ruby
 with CTE AS 
@@ -49,7 +49,7 @@ order BY customer_id
 ```
 
 ---
-4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```ruby
 
@@ -60,10 +60,11 @@ using (product_id)
 GROUP BY 2
 ORDER BY COUNT DESC
 LIMIT 1
+
 ```
 
 --- 
-5. Which item was the most popular for each customer?
+Which item was the most popular for each customer?
 
 ```ruby
 
@@ -82,7 +83,8 @@ WHERE RANK = 1
 ```
 
 --- 
-6. Which item was purchased first by the customer after they became a member?
+Which item was purchased first by the customer after they became a member?
+
 ```ruby
 with CTE AS (
   SELECT s.customer_id, menu.product_name, s.order_date, m.join_date,
@@ -120,7 +122,7 @@ WHERE ordered_before_membership = 1
 
 --- 
 
-8. What is the total items and amount spent for each member before they became a member?
+What is the total items and amount spent for each member before they became a member?
 
 ```ruby
 CREATE VIEW  ITEMS_AMOUNT_SPENT AS
@@ -163,7 +165,7 @@ ORDER BY customer_id
 ```
 
 --- 
-9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```ruby
 SELECT S.customer_id, sum(
@@ -177,9 +179,11 @@ case
 
 group by 1
 order by s.customer_id
+
 ```
 ---
-10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+
+In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```ruby
 
