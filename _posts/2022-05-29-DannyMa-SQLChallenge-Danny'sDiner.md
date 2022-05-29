@@ -99,7 +99,8 @@ FROM CTE
 WHERE ordered_first = 1
 ```
 
---- 7. Which item was purchased just before the customer became a member?
+--- 
+7. Which item was purchased just before the customer became a member?
 
 ```ruby
 WITH CTE AS (
@@ -118,7 +119,9 @@ WHERE ordered_before_membership = 1
 ```
 
 --- 
-8.What is the total items and amount spent for each member before they became a member?
+
+8. What is the total items and amount spent for each member before they became a member?
+
 ```ruby
 CREATE VIEW  ITEMS_AMOUNT_SPENT AS
 (SELECT S.CUSTOMER_ID, COUNT(S.CUSTOMER_ID) AS TOTAL_ITEMS, SUM(MENU.PRICE), S.product_id
@@ -160,7 +163,7 @@ ORDER BY customer_id
 ```
 
 --- 
-9.If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```ruby
 SELECT S.customer_id, sum(
@@ -176,7 +179,7 @@ group by 1
 order by s.customer_id
 ```
 ---
-10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```ruby
 
