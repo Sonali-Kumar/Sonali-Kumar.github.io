@@ -9,7 +9,7 @@ plugins:
 #-------------------------------
 # General Site Settings
 title: Sonali Kumar
-description: "Hi I'm Sonali, and I'm a HR Analyst based in Upstate NY. I am passionate about people analytics, organization development, Health & Wellness, and process improvement." 
+description: "Hi I'm Sonali, and I'm a HR Analyst based in Upstate NY. I am passionate about People Analytics, Organization Development, and Health & Wellness." 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
