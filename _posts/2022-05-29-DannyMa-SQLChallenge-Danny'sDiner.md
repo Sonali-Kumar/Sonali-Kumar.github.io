@@ -5,6 +5,7 @@ image: "/posts/Danny_Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
 
+---
 https://8weeksqlchallenge.com/case-study-1/
 
 
@@ -36,18 +37,19 @@ SELECT  customer_id, count(DISTINCT(order_date)) As number_of_days
 What was the first item from the menu purchased by each customer?
 
 ```ruby
-with CTE AS 
+with first_item_ordered AS 
 (
-      SELECT S.order_date, S.customer_id, M.product_name,
-      RANK ()  OVER (ORDER BY S.order_date) 
-      FROM DANNYS_DINER.SALES AS S
-     JOIN DANNYS_DINER.MENU AS M
-     USING (product_id)
-     )
+SELECT S.order_date, S.customer_id, M.product_name,
+	RANK ()  OVER (ORDER BY S.order_date) 
+	FROM DANNYS_DINER.SALES AS S
+JOIN DANNYS_DINER.MENU AS M
+USING (product_id)
+)
+
 SELECT customer_id, product_name
-FROM CTE
-WHERE RANK = 1 
-order BY customer_id
+	FROM first_item_ordered
+	WHERE RANK = 1 
+	Order BY customer_id
 
 ```
 
@@ -57,11 +59,11 @@ What is the most purchased item on the menu and how many times was it purchased 
 ```ruby
 
 SELECT COUNT(s.product_id), M.product_name
-FROM DANNYS_DINER.SALES as s
-Join dannys_diner.menu as m 
-using (product_id)
-GROUP BY 2
-ORDER BY COUNT DESC
+	FROM DANNYS_DINER.SALES as s
+	Join dannys_diner.menu as m 
+	using (product_id)
+	GROUP BY 2
+	ORDER BY COUNT DESC
 LIMIT 1
 
 ```
@@ -71,17 +73,19 @@ Which item was the most popular for each customer?
 
 ```ruby
 
-WITH CTE AS (
-  SELECT s.customer_id, m.product_name,
-RANK () OVER( PARTITION BY s.customer_id ORDER BY COUNT(m.product_name) desc)
-FROM DANNYS_DINER.SALES AS S
-  LEFT JOIN DANNYS_DINER.MENU AS m
-  ON S.product_id = m.product_id
-GROUP BY s.customer_id, m.product_name, s.product_id)
+WITH most_popular_by_customer AS 
+(
+SELECT s.customer_id, m.product_name,
+	RANK () OVER( PARTITION BY s.customer_id ORDER BY COUNT(m.product_name) desc)
+	FROM DANNYS_DINER.SALES AS S
+	LEFT JOIN DANNYS_DINER.MENU AS m
+	ON S.product_id = m.product_id
+	GROUP BY s.customer_id, m.product_name, s.product_id
+)
 
 SELECT customer_id, product_name
-from CTE
-WHERE RANK = 1
+	FROM most_popular_by_customer
+	WHERE RANK = 1
 
 ```
 
