@@ -6,7 +6,7 @@ tags: [SQL, DannyMa, Danny's Diner]
 ---
 
 ---
-[Link text Here](https://8weeksqlchallenge.com/case-study-1/)
+[Danny's Diner Week 1 Challenge](https://8weeksqlchallenge.com/case-study-1/)
 
 
 ---
