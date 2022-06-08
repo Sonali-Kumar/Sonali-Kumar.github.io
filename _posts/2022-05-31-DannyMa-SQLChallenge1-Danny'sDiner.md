@@ -92,8 +92,8 @@ The final `members` table captures the `join_date` when a `customer_id` joined t
 
 ## Case Study Questions & My Solutions
 
-
 * What is the total amount each customer spent at the restaurant?
+
 ```ruby
 
 SELECT S.CUSTOMER_ID, SUM(M.PRICE) AS MONEY_SPENT
@@ -108,9 +108,9 @@ ORDER BY 1
 
 ![alt text](/img/posts/DannyDiner_1.PNG "Purchase Amount by Customer!")
 
----
 
 * How many days has each customer visited the restaurant?
+
 ```ruby
 
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS NUMBER_OF_VISITS
@@ -122,7 +122,7 @@ ORDER BY 1
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_2.PNG "Customer Visits")
 
----
+
 * What was the first item from the menu purchased by each customer?
 
 ```ruby
