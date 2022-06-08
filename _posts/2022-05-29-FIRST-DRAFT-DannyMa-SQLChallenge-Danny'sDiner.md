@@ -1,9 +1,11 @@
 ---
 layout: post
-title: Danny's Diner Week 1 SQL Challenge
+title: First Draft - Danny's Diner Week 1 SQL Challenge
 image: "/posts/Danny_Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
+
+*I will be leaving this post up to demostrate the progress I made between my first attemp to my final post [HERE] (https://sonali-kumar.github.io/2022/05/31/DannyMa-SQLChallenge1-Danny'sDiner.html)*
 
 ---
 [Danny's Diner Week 1 Challenge](https://8weeksqlchallenge.com/case-study-1/)
