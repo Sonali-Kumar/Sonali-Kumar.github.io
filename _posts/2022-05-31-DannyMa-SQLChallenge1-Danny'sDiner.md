@@ -100,7 +100,7 @@ The final `members` table captures the `join_date` when a `customer_id` joined t
 ```ruby
 
 SELECT S.CUSTOMER_ID, SUM(M.PRICE) AS MONEY_SPENT
-   from DANNYS_DINER.SALES AS S 
+   FROM DANNYS_DINER.SALES AS S 
    LEFT JOIN DANNYS_DINER.MENU AS M 
    USING (PRODUCT_ID)
 
@@ -129,17 +129,17 @@ ORDER BY 1
 * What was the first item from the menu purchased by each customer?
 
 ```ruby
-with first_item_purchase as (
+WITH first_item_purchase AS (
   
     SELECT S.customer_id, M.product_name, S.order_date,
-    DENSE_RANK () OVER (PARTITION BY S.CUSTOMER_ID ORDER BY S.ORDER_DATE) as rank_by_orderdate
+    DENSE_RANK () OVER (PARTITION BY S.CUSTOMER_ID ORDER BY S.ORDER_DATE) AS rank_by_orderdate
     	FROM DANNYS_DINER.SALES AS S  
         LEFT JOIN DANNYS_DINER.MENU AS M 
         USING (product_id)
 )
-Select customer_id, product_name as first_order
-	from first_item_purchase	
-	where rank_by_orderdate = 1
+SELECT customer_id, product_name AS first_order
+	FROM first_item_purchase	
+	WHERE rank_by_orderdate = 1
 ```
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_3.PNG "First Purchase by Customer")
@@ -153,8 +153,8 @@ SELECT M.product_name as most_purchased_item, COUNT(S.product_id) AS count_of_or
     USING (product_id)
    
 GROUP by 1
-order by COUNT(S.product_id) DESC
-limit 1
+ORDER by COUNT(S.product_id) DESC
+LIMIT 1
 ```
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_4.PNG "Most Purchased Item and Order Count")
@@ -164,9 +164,9 @@ limit 1
 ```ruby
 WITH MOST_POPULAR_ITEM AS (
   
-select S.customer_id, M.PRODUCT_NAME, COUNT(S.product_id) AS PURCHASE_COUNT,
+SELECT S.customer_id, M.PRODUCT_NAME, COUNT(S.product_id) AS PURCHASE_COUNT,
 	RANK () OVER (PARTITION BY S.customer_id ORDER BY count(S.product_id) DESC) 
-	from DANNYS_DINER.SALES AS S 
+	FROM DANNYS_DINER.SALES AS S 
   	LEFT JOIN DANNYS_DINER.MENU AS M 
   	USING (product_id)
     
@@ -245,7 +245,7 @@ GROUP BY S.CUSTOMER_ID
 SELECT S.customer_id,
 SUM(CASE WHEN M.PRODUCT_NAME = 'sushi' then m.price*20 
 	else m.price*10
-    end) as points
+    end) AS points
       FROM DANNYS_DINER.SALES AS S 
       LEFT JOIN DANNYS_DINER.MENU AS M 
       USING (product_id)
