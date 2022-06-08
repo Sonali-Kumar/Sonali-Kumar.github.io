@@ -8,7 +8,7 @@ tags: [SQL, DannyMa, Danny's Diner]
 
 ## Learning Objective 
 
-The following topics relevant to the Danny's Diner case study are covered lots of depth in the Serious SQL course:
+I used *PostgreSQL* to tackle this case study, mainly focusing on following functions:
 
 * Common Table Expressions
 * Group By Aggregates
@@ -30,25 +30,11 @@ He plans on using these insights to help him decide whether he should expand the
 
 Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions!
 
-Danny has shared with you 3 key datasets for this case study:
+All datasets exist within the **`dannys_diner`** database schema. Danny has shared with you 3 key datasets for this case study:
 
 * `sales`
 * `menu`
 * `members`
-
-You can inspect the entity relationship diagram and example data below.
-
-## Entity Relationship Diagram
-
-
-<div class="dbdiagram-container">
-<iframe src='https://dbdiagram.io/embed/608d07e4b29a09603d12edbd'> </iframe>
-</div>
-
-
-## Example Datasets
-
-All datasets exist within the **`dannys_diner`** database schema - be sure to include this reference within your SQL scripts as you start exploring the data and answering the case study questions.
 
 ### Table 1: sales
 
@@ -103,23 +89,9 @@ The final `members` table captures the `join_date` when a `customer_id` joined t
 
 </div>
 
-## Interactive SQL Session
-
-You can use the embedded DB Fiddle below to easily access these example datasets - this interactive session has everything you need to start solving these questions using SQL.
-
-You can click on the `Edit on DB Fiddle` link on the top right hand corner of the embedded session below and it will take you to a fully functional SQL editor where you can write your own queries to analyse the data.
-
-You can feel free to choose any SQL dialect you'd like to use, the existing Fiddle is using PostgreSQL 13 as default.
-
-Serious SQL students have access to a dedicated SQL script in the 8 Week SQL Challenge section of the course which they can use to generate relevant temporary tables like we've done throughout the entire course!
-
-<div class="sqlfiddle-container">
-  <iframe src="https://embed.db-fiddle.com/912b55b7-0c69-4f19-906f-aaef8ece6088" frameborder="0" allowfullscreen="" title="Embedded fiddle"></iframe>
-</div>
 
 ## Case Study Questions & My Solutions
 
-Each of the following case study questions can be answered using a single SQL statement:
 
 * What is the total amount each customer spent at the restaurant?
 ```ruby
