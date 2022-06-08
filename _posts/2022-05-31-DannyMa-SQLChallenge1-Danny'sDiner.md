@@ -119,7 +119,8 @@ Serious SQL students have access to a dedicated SQL script in the 8 Week SQL Cha
 
 Each of the following case study questions can be answered using a single SQL statement:
 
-1. What is the total amount each customer spent at the restaurant?
+What is the total amount each customer spent at the restaurant?
+
 ```ruby
 
 SELECT S.CUSTOMER_ID, SUM(M.PRICE) AS MONEY_SPENT
@@ -131,11 +132,12 @@ GROUP BY 1
 ORDER BY 1
 
 ```
+
 ![alt text](img/posts/DannyDiner_1.PNG "Purchase Amount by Customer!")
 
 ---
 
-2. How many days has each customer visited the restaurant?
+How many days has each customer visited the restaurant?
 
 ```ruby
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS NUMBER_OF_VISITS
