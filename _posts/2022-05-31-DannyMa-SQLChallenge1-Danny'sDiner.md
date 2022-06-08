@@ -4,7 +4,7 @@ title: "Case Study #1 - Danny's Diner"
 image: "/posts/Danny_Diner.png"
 tags: [SQL, DannyMa, Danny's Diner]
 ---
-<img src="{{ site.baseurl }}/images/case-study-designs/1.png">
+
 
 ## Learning Objective 
 
