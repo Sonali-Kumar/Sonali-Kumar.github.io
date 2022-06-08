@@ -194,7 +194,8 @@ ALTER duration_mins TYPE INTEGER USING duration_mins::INTEGER
 
 ##### Changing the column type to *TIMESTAMP*
 
-**In order to change the column type to *TIMESTAMP*, data cannot be blank in that given column**
+***NOTE:** In order to change the column type to *TIMESTAMP*, data cannot be blank in that given column.*
+
 ```ruby
 UPDATE pizza_runner.runner_orders
 SET pickup_time = NULL   
