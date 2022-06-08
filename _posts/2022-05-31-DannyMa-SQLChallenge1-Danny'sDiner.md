@@ -40,7 +40,7 @@ You can inspect the entity relationship diagram and example data below.
 
 ## Entity Relationship Diagram
 
-[link text itself]: https://dbdiagram.io/embed/608d07e4b29a09603d12edbd
+[https://dbdiagram.io/embed/608d07e4b29a09603d12edbd]
 
 
 ## Example Datasets
@@ -118,7 +118,7 @@ Serious SQL students have access to a dedicated SQL script in the 8 Week SQL Cha
 
 Each of the following case study questions can be answered using a single SQL statement:
 
-1. What is the total amount each customer spent at the restaurant?
+* What is the total amount each customer spent at the restaurant?
 
 ```ruby
 
@@ -136,8 +136,7 @@ ORDER BY 1
 
 ---
 
-..
-2. How many days has each customer visited the restaurant?
+* How many days has each customer visited the restaurant?
 
 ```ruby
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS NUMBER_OF_VISITS
@@ -150,7 +149,7 @@ ORDER BY 1
 ![alt text](/img/posts/dannysdiner/DannyDiner_2.PNG "Customer Visits")
 
 ---
-## What was the first item from the menu purchased by each customer?
+* What was the first item from the menu purchased by each customer?
 
 ```ruby
 with first_item_purchase as (
@@ -169,7 +168,7 @@ Select customer_id, product_name as first_order
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_3.PNG "First Purchase by Customer")
 
-## What is the most purchased item on the menu and how many times was it purchased by all customers?
+* What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```ruby
 SELECT M.product_name as most_purchased_item, COUNT(S.product_id) AS count_of_orders
@@ -184,7 +183,7 @@ limit 1
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_4.PNG "Most Purchased Item and Order Count")
 
-## 5. Which item was the most popular for each customer?
+* 5. Which item was the most popular for each customer?
 
 
 ```ruby
@@ -206,7 +205,7 @@ SELECT customer_id, product_name, purchase_count
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_5.PNG "Most Popular Item by Customer")
 
-## 6. Which item was purchased first by the customer after they became a member?
+* 6. Which item was purchased first by the customer after they became a member?
 
 
 ```ruby
@@ -229,7 +228,7 @@ SELECT customer_id, product_name
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_6.PNG "Member's First Purchase")
 
-## 7. Which item was purchased just before the customer became a member?
+* 7. Which item was purchased just before the customer became a member?
 
 ```ruby
 WITH LAST_NON_MEMBER_PURCHASE AS (
@@ -251,7 +250,7 @@ SELECT customer_id, product_name
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_7.PNG "Last Non-Member Purchase")
 
-## 8. What is the total items and amount spent for each member before they became a member?
+* 8. What is the total items and amount spent for each member before they became a member?
 
 ```ruby
 SELECT S.customer_id, COUNT(S.PRODUCT_ID) AS TOTAL_ITEMS, SUM(M.PRICE) AS AMOUNT_SPENT
@@ -266,7 +265,7 @@ GROUP BY S.CUSTOMER_ID
 
 ![alt text](img/posts/dannysdiner/DannyDiner_8.PNG "Customer's purchase details before becoming memebers")
 
-## 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+* 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```ruby
 SELECT S.customer_id,
@@ -283,7 +282,7 @@ order by 1
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_9.PNG "Points Earned")
 
-## 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+* 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```ruby
 SELECT S.CUSTOMER_ID, 
@@ -303,21 +302,12 @@ ORDER BY 1
 ![alt text](/img/posts/dannysdiner/DannyDiner_10.PNG "Points Earned by Members")
 
 
-## Conclusion
-
 ----
 
 ### Final Thoughts
+
+This is my first SQL Case Study, absolutely loved it! Thank you Danny for creating these case studies to help SQL-learners *(like myself)* apply their theoratical knowledge into pratice.
+
 ---
 
-### All 8 Week SQL Challenge Case Studies
-
-All of the 8 Week SQL Challenge case studies can be found below:
-
-<ul>
-  {% for post in site.posts reversed %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+## For those who would like to join the challenge, here is the link: [https://8weeksqlchallenge.com/]
