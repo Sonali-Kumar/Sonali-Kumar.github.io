@@ -159,4 +159,31 @@ This case study has **LOTS** of questions - they are broken up by area of focus 
 * Bonus DML Challenges (DML = Data Manipulation Language)
 
 
-**Before you start writing your SQL queries however - you might want to investigate the data, you may want to do something with some of those `null` values and data types in the `customer_orders` and `runner_orders` tables!
+**Before you start writing your SQL queries however - you might want to investigate the data, you may want to do something with some of those `null` values and data types in the `customer_orders` and `runner_orders` tables!**
+
+-- RENAMING COLUMNS -- 
+```ruby
+ALTER TABLE PIZZA_RUNNER.runner_ORDERS
+RENAME COLUMN distance TO distance_KM
+```
+
+```ruby
+ALTER TABLE PIZZA_RUNNER.runner_ORDERS
+RENAME COLUMN duration TO duration_mins 
+```
+--- 
+CHANGING COLUMN TYPE 
+
+**In order to change the column type to timestamp, data cannot be blank in that given column**
+```ruby
+UPDATE pizza_runner.runner_orders
+SET pickup_time = NULL   
+WHERE pickup_time = '' OR pickup_time = 'null'
+```
+```ruby
+ALTER TABLE pizza_runner.runner_orders
+ALTER pickup_time TYPE TIMESTAMP USING pickup_time::TIMESTAMP
+```
+
+
+
