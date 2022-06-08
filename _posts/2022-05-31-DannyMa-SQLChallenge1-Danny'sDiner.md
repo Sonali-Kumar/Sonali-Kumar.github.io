@@ -40,7 +40,10 @@ You can inspect the entity relationship diagram and example data below.
 
 ## Entity Relationship Diagram
 
-[https://dbdiagram.io/embed/608d07e4b29a09603d12edbd]
+
+<div class="dbdiagram-container">
+<iframe src='https://dbdiagram.io/embed/608d07e4b29a09603d12edbd'> </iframe>
+</div>
 
 
 ## Example Datasets
@@ -183,7 +186,7 @@ limit 1
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_4.PNG "Most Purchased Item and Order Count")
 
-* 5. Which item was the most popular for each customer?
+* Which item was the most popular for each customer?
 
 
 ```ruby
@@ -205,7 +208,7 @@ SELECT customer_id, product_name, purchase_count
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_5.PNG "Most Popular Item by Customer")
 
-* 6. Which item was purchased first by the customer after they became a member?
+* Which item was purchased first by the customer after they became a member?
 
 
 ```ruby
@@ -228,7 +231,7 @@ SELECT customer_id, product_name
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_6.PNG "Member's First Purchase")
 
-* 7. Which item was purchased just before the customer became a member?
+* Which item was purchased just before the customer became a member?
 
 ```ruby
 WITH LAST_NON_MEMBER_PURCHASE AS (
@@ -250,7 +253,7 @@ SELECT customer_id, product_name
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_7.PNG "Last Non-Member Purchase")
 
-* 8. What is the total items and amount spent for each member before they became a member?
+* What is the total items and amount spent for each member before they became a member?
 
 ```ruby
 SELECT S.customer_id, COUNT(S.PRODUCT_ID) AS TOTAL_ITEMS, SUM(M.PRICE) AS AMOUNT_SPENT
@@ -263,9 +266,9 @@ WHERE S.ORDER_DATE < MEM.JOIN_DATE
 GROUP BY S.CUSTOMER_ID
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_8.PNG "Customer's purchase details before becoming memebers")
+![alt text](/img/posts/dannysdiner/DannyDiner_8.PNG "Customer's purchase details before becoming memebers")
 
-* 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+* If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```ruby
 SELECT S.customer_id,
@@ -282,7 +285,7 @@ order by 1
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_9.PNG "Points Earned")
 
-* 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+* In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```ruby
 SELECT S.CUSTOMER_ID, 
@@ -310,4 +313,4 @@ This is my first SQL Case Study, absolutely loved it! Thank you Danny for creati
 
 ---
 
-## For those who would like to join the challenge, here is the link: [https://8weeksqlchallenge.com/]
+## For those who would like to join the challenge, [link text itself]: https://8weeksqlchallenge.com/
