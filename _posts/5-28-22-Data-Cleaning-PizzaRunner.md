@@ -182,6 +182,8 @@ RENAME COLUMN duration TO duration_mins
 
 ##### Changing the column type to *INTEGER* or *DECIMAL*
 
+***NOTE**: In order to change the column type to *INTEGER* or *DECIMAL*, make sure that the column data only contains numbers **NOT** strings.*
+
 ```ruby
 ALTER TABLE pizza_runner.runner_orders
 ALTER distance_km TYPE DECIMAL USING distance_km::DECIMAL
@@ -190,11 +192,10 @@ ALTER distance_km TYPE DECIMAL USING distance_km::DECIMAL
 ALTER TABLE pizza_runner.runner_orders
 ALTER duration_mins TYPE INTEGER USING duration_mins::INTEGER
 ```
-***NOTE**: If you are running into issues, please check to make sure that the column data only contains numbers NOT strings.*
 
 ##### Changing the column type to *TIMESTAMP*
 
-***NOTE:** In order to change the column type to *TIMESTAMP*, data cannot be blank in that given column.*
+***NOTE:** In order to change the column type to *TIMESTAMP*, data **CANNOT** be BLANK or strings in that given column.*
 
 ```ruby
 UPDATE pizza_runner.runner_orders
