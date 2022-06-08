@@ -122,7 +122,6 @@ Serious SQL students have access to a dedicated SQL script in the 8 Week SQL Cha
 Each of the following case study questions can be answered using a single SQL statement:
 
 * What is the total amount each customer spent at the restaurant?
-
 ```ruby
 
 SELECT S.CUSTOMER_ID, SUM(M.PRICE) AS MONEY_SPENT
@@ -140,8 +139,8 @@ ORDER BY 1
 ---
 
 * How many days has each customer visited the restaurant?
-
 ```ruby
+
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS NUMBER_OF_VISITS
 	FROM DANNYS_DINER.SALES
 
@@ -166,7 +165,6 @@ with first_item_purchase as (
 Select customer_id, product_name as first_order
 	from first_item_purchase	
 	where rank_by_orderdate = 1
-
 ```
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_3.PNG "First Purchase by Customer")
@@ -188,7 +186,6 @@ limit 1
 
 * Which item was the most popular for each customer?
 
-
 ```ruby
 WITH MOST_POPULAR_ITEM AS (
   
@@ -209,7 +206,6 @@ SELECT customer_id, product_name, purchase_count
 ![alt text](/img/posts/dannysdiner/DannyDiner_5.PNG "Most Popular Item by Customer")
 
 * Which item was purchased first by the customer after they became a member?
-
 
 ```ruby
 WITH FIRST_MEMBER_PURCHASE AS (
@@ -272,15 +268,15 @@ GROUP BY S.CUSTOMER_ID
 
 ```ruby
 SELECT S.customer_id,
-sum(CASE WHEN M.PRODUCT_NAME = 'sushi' then m.price*20 
+SUM(CASE WHEN M.PRODUCT_NAME = 'sushi' then m.price*20 
 	else m.price*10
     end) as points
       FROM DANNYS_DINER.SALES AS S 
       LEFT JOIN DANNYS_DINER.MENU AS M 
       USING (product_id)
     
-group by 1
-order by 1
+GROUP by 1
+ORDER by 1
 ```
 
 ![alt text](/img/posts/dannysdiner/DannyDiner_9.PNG "Points Earned")
