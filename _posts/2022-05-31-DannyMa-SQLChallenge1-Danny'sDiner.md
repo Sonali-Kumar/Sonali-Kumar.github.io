@@ -133,7 +133,7 @@ ORDER BY 1
 
 ```
 
-![alt text](img/posts/DannyDiner_1.PNG "Purchase Amount by Customer!")
+![alt text](/img/posts/DannyDiner_1.PNG "Purchase Amount by Customer!")
 
 ---
 
@@ -147,7 +147,7 @@ GROUP BY 1
 ORDER BY 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_2.PNG "Customer Visits")
+![alt text](/img/posts/dannysdiner/DannyDiner_2.PNG "Customer Visits")
 
 ---
 3. What was the first item from the menu purchased by each customer?
