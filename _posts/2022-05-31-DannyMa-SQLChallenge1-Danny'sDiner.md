@@ -281,4 +281,4 @@ This is my first SQL Case Study, absolutely loved it! Thank you Danny for creati
 
 ---
 
-## For those who would like to join the challenge, [link text itself]: https://8weeksqlchallenge.com/
+## For those who would like to join the challenge, [8 Week SQL Challenge](https://8weeksqlchallenge.com/)
