@@ -131,7 +131,7 @@ GROUP BY 1
 ORDER BY 1
 
 ```
-![alt text](img/posts/dannysdiner/DannyDiner_1.PNG "Purchase Amount by Customer!")
+![alt text](img/posts/DannyDiner_1.PNG "Purchase Amount by Customer!")
 
 ---
 
