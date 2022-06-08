@@ -161,20 +161,37 @@ This case study has **LOTS** of questions - they are broken up by area of focus 
 
 **Before you start writing your SQL queries however - you might want to investigate the data, you may want to do something with some of those `null` values and data types in the `customer_orders` and `runner_orders` tables!**
 
--- RENAMING COLUMNS -- 
+
+## Let's Get Started!!!
+
+--- I am starting with renaming some columns in the Runner_Orders table. If you are wondering WHY, I want to remove the units (min, km, etc.) from the column and change the column type from *VARCHAR* to either *INTEGER* or *DECIMAL*. This will help later in the challenge when we are instructed to do calculations using these columns.
+
+* RENAMING COLUMNS
+
 ```ruby
 ALTER TABLE PIZZA_RUNNER.runner_ORDERS
 RENAME COLUMN distance TO distance_KM
 ```
-
 ```ruby
 ALTER TABLE PIZZA_RUNNER.runner_ORDERS
 RENAME COLUMN duration TO duration_mins 
 ```
 --- 
-CHANGING COLUMN TYPE 
+Below is how you can change the column type! 
 
-**In order to change the column type to timestamp, data cannot be blank in that given column**
+-- Changing the column type to *INTEGER* or *DECIMAL* -- 
+```ruby
+ALTER TABLE pizza_runner.runner_orders
+ALTER distance_km TYPE DECIMAL USING distance_km::DECIMAL
+```
+```ruby
+ALTER TABLE pizza_runner.runner_orders
+ALTER duration_mins TYPE INTEGER USING duration_mins::INTEGER
+```
+
+***NOTE**: If you are running into issues, please check to make sure that the column data only contains numbers NOT strings.*
+
+**In order to change the column type to *TIMESTAMP*, data cannot be blank in that given column**
 ```ruby
 UPDATE pizza_runner.runner_orders
 SET pickup_time = NULL   
