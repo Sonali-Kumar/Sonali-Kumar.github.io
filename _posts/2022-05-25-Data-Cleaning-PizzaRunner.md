@@ -14,7 +14,9 @@ The following post covers cleaning of the Pizza Runner dataset. I used *PostgreS
 * Alter Columns
 * Rename Columns
 * Change Column Type
-* Timestamp 
+* Timestamp
+* Wildcards
+* Substring 
 
 
 ## Introduction
@@ -164,10 +166,11 @@ This case study has **LOTS** of questions - they are broken up by area of focus 
 
 ## Let's Get Started!!!
 
-I am starting with renaming some columns in the Runner_Orders table. If you are wondering WHY, I want to remove the units (min, km, etc.) from the column and change the column type from *VARCHAR* to either *INTEGER* or *DECIMAL*. This will help later in the challenge when we are instructed to do calculations using these columns.
-
 ---
+
 #### RENAMING COLUMNS
+
+I am starting with renaming some columns in the Runner_Orders table. If you are wondering WHY, I want to remove the units (min, km, etc.) from the column and change the column type from *VARCHAR* to either *INTEGER* or *DECIMAL*. This will help later in the challenge when we are instructed to do calculations using these columns.
 
 ```ruby
 ALTER TABLE PIZZA_RUNNER.runner_ORDERS
@@ -178,6 +181,52 @@ ALTER TABLE PIZZA_RUNNER.runner_ORDERS
 RENAME COLUMN duration TO duration_mins 
 ```
 --- 
+#### CHANGING COLUMN VALUES
+
+After changing the column name, I am removing text/string from the *duration_mins* column and *distance_km* column, using the substring function.
+
+```ruby
+UPDATE PIZZA_RUNNER.runner_ORDERS
+SET duration_mins = SUBSTRING(duration_mins,0,3)
+WHERE duration_mins like '%mi%'
+```
+
+```ruby
+UPDATE PIZZA_RUNNER.runner_ORDERS
+SET distance_km = SUBSTRING(distance_km,0,3)
+WHERE distance_km like '%km%'
+```
+---
+Below, I am updating the 'null' and/or BLANK values to **NULL** for consistency purposes. 
+
+```ruby
+UPDATE PIZZA_RUNNER.CUSTOMER_ORDERS
+SET EXCLUSIONS = NULL 
+WHERE exclusions = 'null' or exclusions = ''
+```
+
+```ruby
+
+UPDATE PIZZA_RUNNER.CUSTOMER_ORDERS
+SET extras = NULL 
+WHERE extras = 'null' or extras = ''
+```
+
+```ruby
+
+UPDATE PIZZA_RUNNER.runner_ORDERS
+SET distance_km = NULL 
+WHERE distance_km = 'null' or distance_km = ''
+```
+
+```ruby
+
+UPDATE PIZZA_RUNNER.runner_ORDERS
+SET duration_mins = NULL 
+WHERE duration_mins = 'null' or duration_mins = ''
+```
+
+---
 #### CHANGING COLUMN TYPE 
 
 ##### Changing the column type to *INTEGER* or *DECIMAL*
@@ -206,6 +255,3 @@ WHERE pickup_time = '' OR pickup_time = 'null'
 ALTER TABLE pizza_runner.runner_orders
 ALTER pickup_time TYPE TIMESTAMP USING pickup_time::TIMESTAMP
 ```
-
-
-
