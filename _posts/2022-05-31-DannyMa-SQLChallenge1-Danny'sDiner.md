@@ -115,11 +115,11 @@ Serious SQL students have access to a dedicated SQL script in the 8 Week SQL Cha
   <iframe src="https://embed.db-fiddle.com/912b55b7-0c69-4f19-906f-aaef8ece6088" frameborder="0" allowfullscreen="" title="Embedded fiddle"></iframe>
 </div>
 
-## Case Study Questions
+## Case Study Questions & My Solutions
 
 Each of the following case study questions can be answered using a single SQL statement:
 
-What is the total amount each customer spent at the restaurant?
+## What is the total amount each customer spent at the restaurant?
 
 ```ruby
 
@@ -137,7 +137,7 @@ ORDER BY 1
 
 ---
 
-How many days has each customer visited the restaurant?
+## How many days has each customer visited the restaurant?
 
 ```ruby
 SELECT customer_id, COUNT(DISTINCT(order_date)) AS NUMBER_OF_VISITS
@@ -150,7 +150,7 @@ ORDER BY 1
 ![alt text](/img/posts/dannysdiner/DannyDiner_2.PNG "Customer Visits")
 
 ---
-3. What was the first item from the menu purchased by each customer?
+## What was the first item from the menu purchased by each customer?
 
 ```ruby
 with first_item_purchase as (
@@ -167,9 +167,9 @@ Select customer_id, product_name as first_order
 
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_3.PNG "First Purchase by Customer")
+![alt text](/img/posts/dannysdiner/DannyDiner_3.PNG "First Purchase by Customer")
 
-4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+## What is the most purchased item on the menu and how many times was it purchased by all customers?
 
 ```ruby
 SELECT M.product_name as most_purchased_item, COUNT(S.product_id) AS count_of_orders
@@ -182,9 +182,9 @@ order by COUNT(S.product_id) DESC
 limit 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_4.PNG "Most Purchased Item and Order Count")
+![alt text](/img/posts/dannysdiner/DannyDiner_4.PNG "Most Purchased Item and Order Count")
 
-5. Which item was the most popular for each customer?
+## 5. Which item was the most popular for each customer?
 
 
 ```ruby
@@ -204,9 +204,9 @@ SELECT customer_id, product_name, purchase_count
    	WHERE RANK = 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_5.PNG "Most Popular Item by Customer")
+![alt text](/img/posts/dannysdiner/DannyDiner_5.PNG "Most Popular Item by Customer")
 
-6. Which item was purchased first by the customer after they became a member?
+## 6. Which item was purchased first by the customer after they became a member?
 
 
 ```ruby
@@ -227,9 +227,9 @@ SELECT customer_id, product_name
 	WHERE RANK_BY_ORDER_DATE = 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_6.PNG "Member's First Purchase")
+![alt text](/img/posts/dannysdiner/DannyDiner_6.PNG "Member's First Purchase")
 
-7. Which item was purchased just before the customer became a member?
+## 7. Which item was purchased just before the customer became a member?
 
 ```ruby
 WITH LAST_NON_MEMBER_PURCHASE AS (
@@ -249,9 +249,9 @@ SELECT customer_id, product_name
 	WHERE RANK_BY_ORDER_DATE = 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_7.PNG "Last Non-Member Purchase")
+![alt text](/img/posts/dannysdiner/DannyDiner_7.PNG "Last Non-Member Purchase")
 
-8. What is the total items and amount spent for each member before they became a member?
+## 8. What is the total items and amount spent for each member before they became a member?
 
 ```ruby
 SELECT S.customer_id, COUNT(S.PRODUCT_ID) AS TOTAL_ITEMS, SUM(M.PRICE) AS AMOUNT_SPENT
@@ -266,7 +266,7 @@ GROUP BY S.CUSTOMER_ID
 
 ![alt text](img/posts/dannysdiner/DannyDiner_8.PNG "Customer's purchase details before becoming memebers")
 
-9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+## 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 ```ruby
 SELECT S.customer_id,
@@ -281,9 +281,9 @@ group by 1
 order by 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_9.PNG "Points Earned")
+![alt text](/img/posts/dannysdiner/DannyDiner_9.PNG "Points Earned")
 
-10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+## 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 
 ```ruby
 SELECT S.CUSTOMER_ID, 
@@ -300,7 +300,7 @@ GROUP BY 1
 ORDER BY 1
 ```
 
-![alt text](img/posts/dannysdiner/DannyDiner_10.PNG "Points Earned by Members")
+![alt text](/img/posts/dannysdiner/DannyDiner_10.PNG "Points Earned by Members")
 
 
 ## Conclusion
