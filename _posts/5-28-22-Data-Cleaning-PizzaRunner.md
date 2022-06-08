@@ -167,7 +167,7 @@ This case study has **LOTS** of questions - they are broken up by area of focus 
 I am starting with renaming some columns in the Runner_Orders table. If you are wondering WHY, I want to remove the units (min, km, etc.) from the column and change the column type from *VARCHAR* to either *INTEGER* or *DECIMAL*. This will help later in the challenge when we are instructed to do calculations using these columns.
 
 ---
-RENAMING COLUMNS
+#### RENAMING COLUMNS
 
 ```ruby
 ALTER TABLE PIZZA_RUNNER.runner_ORDERS
@@ -178,9 +178,9 @@ ALTER TABLE PIZZA_RUNNER.runner_ORDERS
 RENAME COLUMN duration TO duration_mins 
 ```
 --- 
-Below is how you can change the column type! 
+#### CHANGING COLUMN TYPE 
 
-Changing the column type to *INTEGER* or *DECIMAL*
+##### Changing the column type to *INTEGER* or *DECIMAL*
 
 ```ruby
 ALTER TABLE pizza_runner.runner_orders
@@ -192,8 +192,7 @@ ALTER duration_mins TYPE INTEGER USING duration_mins::INTEGER
 ```
 ***NOTE**: If you are running into issues, please check to make sure that the column data only contains numbers NOT strings.*
 
----
-Changing the column type to *TIMESTAMP*
+##### Changing the column type to *TIMESTAMP*
 
 **In order to change the column type to *TIMESTAMP*, data cannot be blank in that given column**
 ```ruby
