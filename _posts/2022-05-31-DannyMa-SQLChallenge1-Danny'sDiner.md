@@ -40,13 +40,12 @@ You can inspect the entity relationship diagram and example data below.
 
 ## Entity Relationship Diagram
 
-<div class="dbdiagram-container">
-<iframe src='https://dbdiagram.io/embed/608d07e4b29a09603d12edbd'> </iframe>
-</div>
+[link text itself]: https://dbdiagram.io/embed/608d07e4b29a09603d12edbd
+
 
 ## Example Datasets
 
-All datasets exist within the `dannys_diner` database schema - be sure to include this reference within your SQL scripts as you start exploring the data and answering the case study questions.
+All datasets exist within the **`dannys_diner`** database schema - be sure to include this reference within your SQL scripts as you start exploring the data and answering the case study questions.
 
 ### Table 1: sales
 
